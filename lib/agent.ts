@@ -80,7 +80,8 @@ export const createAgent = (
     .join("\n\n");
 
   return new DurableAgent({
-    model: () => Promise.resolve(openrouter(DEFAULT_MODEL)),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    model: () => Promise.resolve(openrouter(DEFAULT_MODEL)) as any,
     system,
     tools: {
       bash: createBashTool(sandboxId),
