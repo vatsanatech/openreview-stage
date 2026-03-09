@@ -80,7 +80,7 @@ export const createAgent = (
     .join("\n\n");
 
   return new DurableAgent({
-    model: openrouter(DEFAULT_MODEL),
+    model: () => Promise.resolve(openrouter(DEFAULT_MODEL)),
     system,
     tools: {
       bash: createBashTool(sandboxId),
